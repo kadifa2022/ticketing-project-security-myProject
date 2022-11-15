@@ -8,10 +8,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service//bean
 public class SecurityServiceImpl implements SecurityService {
 
-    private final UserRepository userRepository;
+    private final UserRepository userRepository;//DI -need to retrieve user from entity
 
     public SecurityServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -21,8 +21,8 @@ public class SecurityServiceImpl implements SecurityService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user= userRepository.findByUserNameAndIsDeleted(username, false);
         if(user==null){
-            throw  new UsernameNotFoundException(username);
+            throw  new UsernameNotFoundException(username);//spring is providing exception
         }
-        return new UserPrincipal(user);//get the user from db and convert to new user that spring understand by  using princip;e
+        return new UserPrincipal(user);//get the user from db and convert to new user that spring understand by  using userPrinciple class
     }
 }
