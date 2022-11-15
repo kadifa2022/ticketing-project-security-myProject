@@ -12,14 +12,16 @@ import java.util.List;
 public class UserPrincipal implements UserDetails {//using for mapping staff
 
 
-    private User user;
+    private User user;//create has a relationship //user is coming from entity
 
-    public UserPrincipal(User user) {
+    public UserPrincipal(User user) {//created mapper
         this.user = user;
     }
 
+
+
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {//created mapper
+    public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorityList=new ArrayList<>();
         GrantedAuthority authority  = new SimpleGrantedAuthority(this.user.getRole().getDescription());
         authorityList.add(authority);
@@ -44,16 +46,16 @@ public class UserPrincipal implements UserDetails {//using for mapping staff
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return this.user.isEnabled();
     }
 }
