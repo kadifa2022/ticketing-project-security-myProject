@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class UserPrincipal implements UserDetails {//using for mapping staff
+public class UserPrincipal implements UserDetails {      //using for mapping staff
 
 
-    private User user;//create has a relationship //user is coming from entity
+    private User user;   //create has a relationship //user is coming from entity
 
     public UserPrincipal(User user) {//created mapper
         this.user = user;
@@ -22,8 +22,11 @@ public class UserPrincipal implements UserDetails {//using for mapping staff
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+
         List<GrantedAuthority> authorityList=new ArrayList<>();
+
         GrantedAuthority authority  = new SimpleGrantedAuthority(this.user.getRole().getDescription());
+
         authorityList.add(authority);
 
         return authorityList;
@@ -57,5 +60,9 @@ public class UserPrincipal implements UserDetails {//using for mapping staff
     @Override
     public boolean isEnabled() {
         return this.user.isEnabled();
+    }
+    public Long getId(){
+        return this.user.getId();
+
     }
 }
