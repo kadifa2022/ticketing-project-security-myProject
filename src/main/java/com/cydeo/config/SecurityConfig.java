@@ -59,18 +59,19 @@ public class SecurityConfig {
                 //.httpBasic()
                 .formLogin()
                     .loginPage("/login")
-//                    .defaultSuccessUrl("/welcome")
-                     .successHandler(authSuccessHandler)
+//                    .defaultSuccessUrl("/welcome")//anybody can  landing on welcome page
+                     .successHandler(authSuccessHandler)//to put some restriction we create class (bean)
                     .failureUrl("/login?error=true")
                     .permitAll()
                 .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login")
-                .and().rememberMe()
-                .tokenValiditySeconds(120)
-                .key("cydeo")
-                .userDetailsService(securityService)
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                    .logoutSuccessUrl("/login")
+                .and()
+                .rememberMe()
+                    .tokenValiditySeconds(120)
+                    .key("cydeo")
+                    .userDetailsService(securityService)//to remember who
                 .and()
                 .build();//security filter chain
     }
