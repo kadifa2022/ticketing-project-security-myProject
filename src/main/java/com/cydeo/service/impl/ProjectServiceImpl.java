@@ -97,7 +97,8 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public List<ProjectDTO> listAllProjectDetails() {//security holder brig you inf. who is log in
+    public List<ProjectDTO> listAllProjectDetails() {//security holder brig you inf. who is log in instead Harold we can assign somebody else
+        //will bring users who can be log in appl.
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
 
 
