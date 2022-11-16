@@ -119,7 +119,9 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<TaskDTO> listAllTasksByStatusIsNot(Status status) {//spring is giving us whose user is in appl.
+    public List<TaskDTO> listAllTasksByStatusIsNot(Status status) {
+
+        //will bring users who can be log in appl.
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         UserDTO loggedInUser = userService.findByUserName(username);
         List<Task> tasks = taskRepository.
@@ -129,6 +131,8 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public List<TaskDTO> listAllTasksByStatus(Status status) {
+
+        //will bring users who can be log in appl.
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         UserDTO loggedInUser = userService.findByUserName(username);
         List<Task> tasks = taskRepository.
