@@ -61,7 +61,7 @@ public class UserPrincipal implements UserDetails {      //using for mapping sta
     public boolean isEnabled() {
         return this.user.isEnabled();
     }
-    public Long getId(){
+    public Long getId(){//this method is for baseEntityListener for unPreUpdate and onPredPersist
         return this.user.getId();
 
     }
