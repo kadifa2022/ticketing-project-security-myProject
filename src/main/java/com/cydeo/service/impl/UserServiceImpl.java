@@ -51,7 +51,8 @@ public class UserServiceImpl implements UserService {
         user.setEnabled(true);
 
         User obj = userMapper.convertToEntity(user);
-        obj.setPassWord(passwordEncoder.encode(obj.getPassWord()));
+        obj.setPassWord(passwordEncoder.encode(obj.getPassWord()));//methode to encode password --injected password encoder
+
         userRepository.save(obj);
     }
 
