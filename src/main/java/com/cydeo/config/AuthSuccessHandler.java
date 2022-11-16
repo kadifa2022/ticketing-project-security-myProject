@@ -17,10 +17,10 @@ public class AuthSuccessHandler implements AuthenticationSuccessHandler {//costu
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-
+            // purpose ? based on the role -for user to land on the page
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
 
-        if (roles.contains("Admin")) {
+        if (roles.contains("Admin")) {//used if statement for roles to separate pages for each user
             response.sendRedirect("/user/create");
         }
         if (roles.contains("Manager")) {
