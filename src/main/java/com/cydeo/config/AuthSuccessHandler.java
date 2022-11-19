@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Set;
 
 @Configuration
-public class AuthSuccessHandler implements AuthenticationSuccessHandler {//costumize who can use what page
+public class AuthSuccessHandler implements AuthenticationSuccessHandler {//customize who can use what page
 
 
     @Override
