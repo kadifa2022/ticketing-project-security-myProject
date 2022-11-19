@@ -15,7 +15,7 @@ public class BaseEntityListener extends AuditingEntityListener {//listening base
 
 
     @PrePersist
-    private void onPrePersist(BaseEntity baseEntity){
+    private void onPrePersist(BaseEntity baseEntity){//to caption in db
 
         Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
 
@@ -30,7 +30,7 @@ public class BaseEntityListener extends AuditingEntityListener {//listening base
     }
 
     @PreUpdate
-    private void onPreUpdate(BaseEntity baseEntity){
+    private void onPreUpdate(BaseEntity baseEntity){//to caption in db
         Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
       baseEntity.setLastUpdateDateTime(LocalDateTime.now());
 

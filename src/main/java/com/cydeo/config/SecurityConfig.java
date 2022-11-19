@@ -37,7 +37,7 @@ public class SecurityConfig {
 //        return  new InMemoryUserDetailsManager(userList);
 //    }
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {//form
         return http
                 .authorizeRequests()
 //                .antMatchers("/user/**").hasRole("ADMIN")
@@ -46,7 +46,7 @@ public class SecurityConfig {
                .antMatchers("/task/employee/**").hasAuthority("Employee")
                .antMatchers("/task/**").hasAuthority("Manager")
                // .antMatchers("/task/**").hasAnyRole("EMPLOYEE", "ADMIN")
-//             .antMatchers("/task/**").hasAuthority("ROLE_EMPLOYEE")
+//             .antMatchers("/task/**").hasAuthority("ROLE_EMPLOYEE") for exp._must match in DB
                 .antMatchers(
                         "/",
                         "/login",
@@ -57,11 +57,11 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
                 .and()
                 //.httpBasic()
-                .formLogin()
+                .formLogin()//want to use my own form
                     .loginPage("/login")
 //                    .defaultSuccessUrl("/welcome")//anybody can  landing on welcome page
                      .successHandler(authSuccessHandler)//to put some restriction we create class (bean)
-                    .failureUrl("/login?error=true")
+                    .failureUrl("/login?error=true")//if user put wrong information
                     .permitAll()
                 .and()
                 .logout()
