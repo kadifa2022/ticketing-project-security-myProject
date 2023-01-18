@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Set;
 
-@Configuration
+@Configuration//can be also @Component-we dont need to define  @bean from this class
 public class AuthSuccessHandler implements AuthenticationSuccessHandler {//customize who can use what page
 
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
             // purpose ? based on the role -for user to land on the page
-        Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
+        Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());//set is used to not have duplicate value for user (Spring is using set)
 
         if (roles.contains("Admin")) {//used if statement for roles to separate pages for each user
             response.sendRedirect("/user/create");

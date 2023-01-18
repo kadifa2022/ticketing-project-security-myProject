@@ -11,17 +11,14 @@ import java.util.List;
 
 public class UserPrincipal implements UserDetails {      //using for mapping staff
 
-
     private User user;   //create has a relationship //user is coming from entity
 
     public UserPrincipal(User user) {//created mapper
         this.user = user;
     }
 
-
-
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    public Collection<? extends GrantedAuthority> getAuthorities() {//returning collections
 
         List<GrantedAuthority> authorityList=new ArrayList<>();
 
@@ -33,7 +30,7 @@ public class UserPrincipal implements UserDetails {      //using for mapping sta
     }
 
     @Override
-    public String getPassword() {
+    public String getPassword() {//how i can access to password field of the user object
         return this.user.getPassWord();
     }
 

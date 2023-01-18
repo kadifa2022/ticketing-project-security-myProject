@@ -19,7 +19,7 @@ public class SecurityConfig {
 
     public SecurityConfig(SecurityService securityService, AuthSuccessHandler authSuccessHandler) {
         this.securityService = securityService;
-        this.authSuccessHandler = authSuccessHandler;
+        this.authSuccessHandler = authSuccessHandler;//DI
     }
 
 
@@ -48,7 +48,7 @@ public class SecurityConfig {
                // .antMatchers("/task/**").hasAnyRole("EMPLOYEE", "ADMIN")
 //             .antMatchers("/task/**").hasAuthority("ROLE_EMPLOYEE") for exp._must match in DB
                 .antMatchers(
-                        "/",
+                        "/",//to log in
                         "/login",
                         "/fragments/**",
                         "/assets/**",
@@ -69,7 +69,7 @@ public class SecurityConfig {
                     .logoutSuccessUrl("/login")
                 .and()
                 .rememberMe()
-                    .tokenValiditySeconds(120)
+                    .tokenValiditySeconds(120)//86400
                     .key("cydeo")
                     .userDetailsService(securityService)//to remember who
                 .and()
