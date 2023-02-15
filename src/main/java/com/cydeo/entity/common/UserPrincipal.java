@@ -19,9 +19,9 @@ public class UserPrincipal implements UserDetails {      //using for mapping sta
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {//returning collections
-
+                //spring understands
         List<GrantedAuthority> authorityList=new ArrayList<>();
-
+                                                                            //coming from db
         GrantedAuthority authority  = new SimpleGrantedAuthority(this.user.getRole().getDescription());
 
         authorityList.add(authority);
