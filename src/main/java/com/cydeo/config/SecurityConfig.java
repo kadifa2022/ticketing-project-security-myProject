@@ -57,7 +57,7 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
                 .and()
                 //.httpBasic()
-                .formLogin()//want to use my own form
+                .formLogin()//want to use my own validation n m       form to spring
                     .loginPage("/login")
 //                    .defaultSuccessUrl("/welcome")//anybody can  landing on welcome page
                      .successHandler(authSuccessHandler)//to put some restriction we create class (bean)

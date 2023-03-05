@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @EntityListeners(BaseEntityListener.class)
 
-
 public class BaseEntity {
 
     @Id
